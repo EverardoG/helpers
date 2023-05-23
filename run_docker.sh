@@ -6,8 +6,8 @@ if [ "$XDG_SESSION_TYPE" = "x11" ]; then
         --net=host \
         -v /home/$USER/docker/noetic:/host \
         -v /home/$USER/noetic_ws:/noetic_ws \
-        -e ROS_MASTER_URI=http://10.249.85.129:11311 \
-        -e ROS_HOSTNAME=10.249.85.129 \
+        -e ROS_MASTER_URI=http://127.0.0.1:11311 \
+        -e ROS_HOSTNAME=127.0.0.1 \
         --env="DISPLAY" \
         --env="QT_X11_NO_MITSHM=1" \
         --env="XDG_RUNTIME_DIR=/tmp" \
