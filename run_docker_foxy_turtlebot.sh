@@ -4,19 +4,21 @@ if [ "$XDG_SESSION_TYPE" = "x11" ]; then
     xhost +local:root
     docker run -it \
         --net=host \
-        -v /home/$USER/docker/noetic:/host \
-        -v /home/$USER/noetic_ws:/noetic_ws \
+        -v /home/$USER/foxy_ws:/root/foxy_ws \
         --env="DISPLAY" \
         --env="QT_X11_NO_MITSHM=1" \
         --env="XDG_RUNTIME_DIR=/tmp" \
         --device=/dev/dri:/dev/dri \
-        --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
         aadi/ros:foxy-desktop-turtlebot
 
     xhost -local:root
 else
     echo "Not running in x!"
 fi
+
+        # --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
+        # -v /home/$USER/noetic_ws:/noetic_ws \
+        # -v /home/$USER/turtlebot3_ws:/turtlebot3_ws \
 
 # -e ROS_MASTER_URI=http://10.0.0.220:11311 \
 # -e ROS_HOSTNAME=10.0.0.2 \
